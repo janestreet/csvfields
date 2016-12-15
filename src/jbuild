@@ -1,0 +1,8 @@
+(library
+ ((name        csvfields)
+  (public_name csvfields)
+  (libraries
+   (core
+    csvlib
+    sexplib
+    xml_light))))
