@@ -1,4 +1,4 @@
-open! Core.Std
+open! Core
 
 (** Automatic conversion of OCaml field types into XML. This is used for excel
 communication functions *)

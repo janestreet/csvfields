@@ -41,7 +41,7 @@
  *)
 
 (* namespace redirection: (mostly to get tail-recursive List functions) *)
-open Core.Std
+open Core
 include struct
   module List = struct
     open List

@@ -1,4 +1,4 @@
-open! Core.Std
+open! Core
 
 type xml = Xml_light.Xml.xml
 
