@@ -75,7 +75,7 @@ let check_extra_fields xml fields =
       match child with
       | Xml_light.Xml.PCData _ -> fail "PCData"
       | Xml_light.Xml.Element (tag, _, _) ->
-        if not (List.mem fields tag) then fail tag
+        if not (List.mem fields tag ~equal:String.equal) then fail tag
     in
     List.iter ~f:iter children
 
