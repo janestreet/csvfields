@@ -6,3 +6,5 @@
     csvlib
     sexplib
     xml_light))))
+
+(jbuild_version jane_street)

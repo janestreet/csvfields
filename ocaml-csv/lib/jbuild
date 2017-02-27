@@ -3,3 +3,5 @@
   (public_name csvfields.csvlib)
   (libraries (core))
   (preprocess (pps ()))))
+
+(jbuild_version jane_street)
