@@ -5,6 +5,7 @@
    (core
     csvlib
     sexplib
-    xml_light))))
+    xml_light))
+  (preprocess (pps (ppx_jane)))))
 
 (jbuild_version jane_street)
