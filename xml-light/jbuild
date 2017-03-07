@@ -9,4 +9,4 @@
 (ocamllex (xml_lexer))
 (ocamlyacc (xml_parser))
 
-(jbuild_version jane_street)
+(jbuild_version 1)
