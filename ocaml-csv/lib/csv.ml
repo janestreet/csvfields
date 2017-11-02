@@ -57,7 +57,7 @@ include struct
     let make = make
     let length = length
     let contains = contains
-    let set = set
+    let set = Bytes.set
     let get = get
     let escaped = escaped
     let concat sep xs = concat xs ~sep
