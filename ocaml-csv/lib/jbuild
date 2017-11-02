@@ -1,6 +1,7 @@
 (library
  ((name        csvlib)
   (public_name csvfields.csvlib)
+  (flags (:standard -unsafe-string))
   (libraries (core))
   (preprocess (pps ( ppx_driver.runner)))))
 
