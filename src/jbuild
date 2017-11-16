@@ -1,6 +1,7 @@
 (library
  ((name        csvfields)
   (public_name csvfields)
+  (flags (:standard -safe-string))
   (libraries
    (core
     csvlib
