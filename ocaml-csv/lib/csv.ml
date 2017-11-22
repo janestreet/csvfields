@@ -95,7 +95,7 @@ let load_rows_inchar ?(separator = ',') f inchar =
         loop (i+1) xs
     in
     loop 0 field_list;
-    row := field_str :: !row;
+    row := (Bytes.unsafe_to_string ~no_mutation_while_string_reachable:field_str) :: !row;
     field := [];
     state := StartField
   in

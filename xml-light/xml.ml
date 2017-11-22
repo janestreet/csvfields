@@ -192,21 +192,20 @@ let buffer_attr ~tmp (n,v) =
 	Buffer.add_char tmp '"'
 
 let tag_for_silly_humans tag =
-  let new_string = String.copy tag in
-  let new_string = String.capitalize new_string in
-  for i = (String.length new_string) - 1 downto 0 do
-    match new_string.[i] with
-    | '_' -> new_string.[i] <- ' '
+  let new_string = Bytes.of_string tag in
+  let new_string = Bytes.capitalize new_string in
+  for i = (Bytes.length new_string) - 1 downto 0 do
+    match Bytes.get new_string i with
+    | '_' -> Bytes.set new_string i ' '
     | _ -> ()
   done;
+  let new_string = Bytes.to_string new_string in
   new_string ^ ": "
 
 let reformat_tag ~format tag =
-  if format = `Xml then tag
-  else begin
-    assert (format = `No_tag);
-    tag_for_silly_humans tag
-  end
+  match format with
+  | `Xml -> tag
+  | `No_tag -> tag_for_silly_humans tag
 
 let write tmp x =
 	let pcdata = ref false in
@@ -237,12 +236,14 @@ let write tmp x =
 ;;
 
 let add_char_if_xml ~format tmp char =
-  if format = `Xml then Buffer.add_char tmp char
-  else assert (format = `No_tag)
+  match format with
+  | `Xml -> Buffer.add_char tmp char
+  | `No_tag -> ()
 
 let add_string_if_xml ~format tmp string =
-  if format = `Xml then Buffer.add_string tmp string
-  else assert (format = `No_tag)
+  match format with
+  | `Xml -> Buffer.add_string tmp string
+  | `No_tag -> ()
 
 
 let write_fmt tmp ~format x =
