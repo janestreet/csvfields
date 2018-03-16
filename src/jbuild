@@ -8,7 +8,7 @@
     sexplib
     xml_light
     num))
-  (preprocess (pps (ppx_jane ppx_driver.runner)))))
+  (preprocess (pps (ppx_jane ppxlib.runner)))))
 
 
 (jbuild_version 1)
