@@ -1,8 +1,7 @@
 (** csv.mli - comma separated values parser
   *
   * $Id: csv.mli,v 1.5 2005/05/24 13:52:50 rich Exp $
-  *)
-
+*)
 
 type t = string list list
 (** Representation of CSV files. *)
