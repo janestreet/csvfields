@@ -86,6 +86,7 @@ module type Csvable = sig
   (** The list of strings creating the header of the [csvable] type. *)
   val csv_header : string list
   val csv_header_spec : Spec.t list
+
   (** [t_of_row row] creates type [t] from the [row]. *)
   val t_of_row : string list -> t
 
