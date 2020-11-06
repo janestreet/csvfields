@@ -1,4 +1,5 @@
-type t = StartField
-         | InUnquotedField
-         | InQuotedField
-         | InQuotedFieldAfterQuote
+type t =
+  | StartField
+  | InUnquotedField
+  | InQuotedField
+  | InQuotedFieldAfterQuote
