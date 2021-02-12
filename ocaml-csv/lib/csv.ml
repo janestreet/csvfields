@@ -318,9 +318,10 @@ let associate header data =
 let save_fn ?(separator = ',') put_string csv =
   (* Quote a single CSV field. *)
   let quote_field field =
-    if String.contains field separator
-    || String.contains field '\"'
-    || String.contains field '\n'
+    if
+      String.contains field separator
+      || String.contains field '\"'
+      || String.contains field '\n'
     then (
       let buffer = Buffer.create 100 in
       Buffer.add_char buffer '\"';
