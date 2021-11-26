@@ -1,3 +1,2 @@
 (library (name csvfields) (public_name csvfields)
- (libraries core_kernel.core csvlib sexplib xml_light num)
- (preprocess (pps ppx_jane)))
+ (libraries core csvlib sexplib xml_light num) (preprocess (pps ppx_jane)))
