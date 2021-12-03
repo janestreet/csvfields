@@ -11,10 +11,10 @@ build: [
 ]
 depends: [
   "ocaml" {>= "4.08.0"}
-  "core_kernel"
+  "core"
   "ppx_jane"
   "sexplib"
-  "dune"        {>= "2.0.0"}
+  "dune"     {>= "2.0.0"}
   "num"
 ]
 synopsis: "Runtime support for ppx_xml_conv and ppx_csv_conv"

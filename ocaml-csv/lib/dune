@@ -1,2 +1,2 @@
-(library (name csvlib) (public_name csvfields.csvlib)
- (libraries core_kernel.core) (preprocess no_preprocessing))
+(library (name csvlib) (public_name csvfields.csvlib) (libraries core)
+ (preprocess no_preprocessing))
