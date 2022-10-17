@@ -126,8 +126,8 @@ let attrib x att =
 	match x with
 	| Element (_,attr,_) ->
 		(try
-			let att = String.lowercase att in
-			snd (List.find (fun (n,_) -> String.lowercase n = att) attr)
+			let att = String.lowercase_ascii att in
+			snd (List.find (fun (n,_) -> String.lowercase_ascii n = att) attr)
 		with
 			Not_found ->
 				raise (No_attribute att))
@@ -193,7 +193,7 @@ let buffer_attr ~tmp (n,v) =
 
 let tag_for_silly_humans tag =
   let new_string = Bytes.of_string tag in
-  let new_string = Bytes.capitalize new_string in
+  let new_string = Bytes.capitalize_ascii new_string in
   for i = (Bytes.length new_string) - 1 downto 0 do
     match Bytes.get new_string i with
     | '_' -> Bytes.set new_string i ' '
