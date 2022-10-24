@@ -17,6 +17,6 @@ depends: [
   "dune"     {>= "2.0.0"}
   "num"
 ]
-synopsis: "Runtime support for ppx_xml_conv and ppx_csv_conv"
+synopsis: "Runtime support for ppx_xml_conv and ppx_csv_conv_deprecated"
 description: "
 "
