@@ -163,20 +163,34 @@ end
 
 module Make(Buffer:X) = struct
 
+
+let is_leading_character_of_decimal_or_hexidecimal char =
+  ('0' <= char && char <= '9') || char = 'x'
+;;
+
 let buffer_pcdata ~tmp text =
 	let l = String.length text in
 	for p = 0 to l-1 do
 		match text.[p] with
 		| '>' -> Buffer.add_string tmp "&gt;"
 		| '<' -> Buffer.add_string tmp "&lt;"
-		| '&' ->
-			if p < l-1 && text.[p+1] = '#' then
-				Buffer.add_char tmp '&'
-			else
-				Buffer.add_string tmp "&amp;"
-		| '\'' -> Buffer.add_string tmp "&apos;"
+         	| '&' ->
+                        (* The condition is [p < l-3] instead of [p < l-2] to account for
+                           a potential semi-colon. *)
+                        if p < l-3 && text.[p+1] = '#' && is_leading_character_of_decimal_or_hexidecimal text.[p+2] then
+                        (* According to https://en.wikipedia.org/wiki/XML#Escaping and
+                           https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Character_reference_overview,
+                           valid escape sequences starting with "&#" are in the form:
+                           [&#NUMERIC_VALUE;]
+                           , where NUMERIC_VALUE can be hexadecimal or decimal. For
+                           example, "&#20013;" or "&#x4e2d;".
+                        *)
+                          Buffer.add_char tmp '&'
+                        else
+                          Buffer.add_string tmp "&amp;"
+		| '\''-> Buffer.add_string tmp "&apos;"
 		| '"' -> Buffer.add_string tmp "&quot;"
-		| c -> Buffer.add_char tmp c
+		| c   -> Buffer.add_char tmp c
 	done
 
 let buffer_attr ~tmp (n,v) =
