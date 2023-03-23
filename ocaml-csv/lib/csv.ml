@@ -191,7 +191,8 @@ let load_rows_inchar ?(separator = ',') f inchar =
      | InUnquotedField | InQuotedFieldAfterQuote ->
        end_of_field ();
        end_of_row ()
-     | InQuotedField -> () (*raise (Bad_CSV_file "Missing end quote after quoted field.")*))
+     | InQuotedField ->
+       () (*raise (Bad_CSV_file "Missing end quote after quoted field.")*))
 ;;
 
 let load_rows ?separator f chan =
