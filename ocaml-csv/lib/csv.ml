@@ -62,7 +62,6 @@ include struct
     let make = make
     let length = length
     let contains = contains
-    let set = Bytes.set
     let get = get
     let escaped = escaped
     let concat sep xs = concat xs ~sep
@@ -98,7 +97,7 @@ let load_rows_inchar ?(separator = ',') f inchar =
     let rec loop i = function
       | [] -> ()
       | x :: xs ->
-        field_str.[i] <- x;
+        Bytes.set field_str i x;
         loop (i + 1) xs
     in
     loop 0 field_list;
