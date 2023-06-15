@@ -79,7 +79,7 @@ let rec dropwhile f = function
 ;;
 
 let lines = List.length
-let columns csv = List.fold_left max 0 (List.map List.length csv)
+let columns csv = List.fold_left max 0 (List.map (List.length :> _ -> _) csv)
 
 open State
 
