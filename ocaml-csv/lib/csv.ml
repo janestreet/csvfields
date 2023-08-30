@@ -1,7 +1,7 @@
 (* csv.ml - comma separated values parser
  *
  * $Id: csv.ml,v 1.5 2005/02/17 15:51:47 rich Exp $
-*)
+ *)
 
 (* The format of CSV files:
  *
@@ -38,7 +38,7 @@
  * and often will, have different lengths). We then provide simple
  * functions to read the CSV file line-by-line, copy it out, or copy a
  * subset of it into a matrix.
-*)
+ *)
 
 (* namespace redirection: (mostly to get tail-recursive List functions) *)
 open Core
@@ -248,10 +248,10 @@ let trim ?(top = true) ?(left = true) ?(right = true) ?(bottom = true) csv =
     then
       List.map
         (fun row ->
-           let row = List.rev row in
-           let row = dropwhile (( = ) "") row in
-           let row = List.rev row in
-           row)
+          let row = List.rev row in
+          let row = dropwhile (( = ) "") row in
+          let row = List.rev row in
+          row)
         csv
     else csv
   in
@@ -290,14 +290,14 @@ let square csv =
   let columns = columns csv in
   List.map
     (fun row ->
-       let n = List.length row in
-       let row = List.rev row in
-       let rec loop acc = function
-         | 0 -> acc
-         | i -> "" :: loop acc (i - 1)
-       in
-       let row = loop row (columns - n) in
-       List.rev row)
+      let n = List.length row in
+      let row = List.rev row in
+      let rec loop acc = function
+        | 0 -> acc
+        | i -> "" :: loop acc (i - 1)
+      in
+      let row = loop row (columns - n) in
+      List.rev row)
     csv
 ;;
 
@@ -310,8 +310,8 @@ let associate header data =
   in
   List.map
     (fun row ->
-       let row = trunc (nr_cols, row) in
-       List.zip_exn header row)
+      let row = trunc (nr_cols, row) in
+      List.zip_exn header row)
     data
 ;;
 
@@ -319,8 +319,8 @@ let save_fn ?(separator = ',') put_string csv =
   (* Quote a single CSV field. *)
   let quote_field field =
     if String.contains field separator
-    || String.contains field '\"'
-    || String.contains field '\n'
+       || String.contains field '\"'
+       || String.contains field '\n'
     then (
       let buffer = Buffer.create 100 in
       Buffer.add_char buffer '\"';
@@ -336,8 +336,8 @@ let save_fn ?(separator = ',') put_string csv =
   let separator = String.make 1 separator in
   List.iter
     (fun line ->
-       put_string (String.concat separator (List.map quote_field line));
-       put_string "\n")
+      put_string (String.concat separator (List.map quote_field line));
+      put_string "\n")
     csv
 ;;
 
@@ -384,14 +384,14 @@ let save_fn_readable output_string csv =
   in
   List.iter
     (fun row ->
-       let row = List.zip_exn widths row in
-       List.iter
-         (fun (width, cell) ->
-            output_string cell;
-            let n = String.length cell in
-            repeat (fun () -> output_string " ") (width - n + 1))
-         row;
-       output_string "\n")
+      let row = List.zip_exn widths row in
+      List.iter
+        (fun (width, cell) ->
+          output_string cell;
+          let n = String.length cell in
+          repeat (fun () -> output_string " ") (width - n + 1))
+        row;
+      output_string "\n")
     csv
 ;;
 

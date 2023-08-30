@@ -38,8 +38,8 @@
 (** An Xml node is either
 	[Element (tag-name, attributes, children)] or [PCData text] *)
 type xml = Types.xml =
-	| Element of (string * (string * string) list * xml list)
-	| PCData of string
+  | Element of (string * (string * string) list * xml list)
+  | PCData of string
 
 (** {6 Xml Parsing} *)
 
@@ -59,6 +59,7 @@ val parse_in : in_channel -> xml
 (** Parse the string containing an Xml document into an Xml data
  structure. *)
 val parse_string : string -> xml
+
 val parse_string_with : XmlParser.t -> string -> xml
 
 (** {6:exc Xml Exceptions} *)
@@ -81,21 +82,20 @@ val parse_string_with : XmlParser.t -> string -> xml
 type error_pos
 
 type error_msg = Types.error_msg =
-	| UnterminatedComment
-	| UnterminatedString
-	| UnterminatedEntity
-	| IdentExpected
-	| CloseExpected
-	| NodeExpected
-	| AttributeNameExpected
-	| AttributeValueExpected
-	| EndOfTagExpected of string
-	| EOFExpected
+  | UnterminatedComment
+  | UnterminatedString
+  | UnterminatedEntity
+  | IdentExpected
+  | CloseExpected
+  | NodeExpected
+  | AttributeNameExpected
+  | AttributeValueExpected
+  | EndOfTagExpected of string
+  | EOFExpected
 
 type error = error_msg * error_pos
 
 exception Error of error
-
 exception File_not_found of string
 
 (** Get a full error message from an Xml error. *)
@@ -169,14 +169,16 @@ val to_string : xml -> string
 (** Print the xml data structure into an user-readable string with
  tabs and lines break between different nodes. *)
 val to_string_fmt : xml -> string
+
 val to_human_string : xml -> string
 
 module type X = sig
   type t
+
   val add_char : t -> char -> unit
   val add_string : t -> string -> unit
 end
 
-module Make(X:X) : sig
+module Make (X : X) : sig
   val write : X.t -> xml -> unit
 end

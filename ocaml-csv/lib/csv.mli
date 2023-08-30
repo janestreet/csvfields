@@ -3,7 +3,6 @@
  * $Id: csv.mli,v 1.5 2005/05/24 13:52:50 rich Exp $
 *)
 
-
 (** Representation of CSV files. *)
 type t = string list list
 
@@ -47,13 +46,11 @@ val load_string : ?separator:char -> string -> t
 *)
 val load_rows : ?separator:char -> (string list -> unit) -> in_channel -> unit
 
-
 (** Works exactly like [load_rows] except that instead of reading from
  * a descriptor, it calls a read_char function.  This function
  * throws [End_of_file] on the end of input.
 *)
 val load_rows_inchar : ?separator:char -> (string list -> unit) -> (unit -> char) -> unit
-
 
 (** This takes a CSV file and trims empty cells.
  *

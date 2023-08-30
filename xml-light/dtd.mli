@@ -104,30 +104,30 @@ val to_string : dtd_item -> string
 *)
 
 type parse_error_msg =
-	| InvalidDTDDecl
-	| InvalidDTDElement
-	| InvalidDTDAttribute
-	| InvalidDTDTag
-	| DTDItemExpected
+  | InvalidDTDDecl
+  | InvalidDTDElement
+  | InvalidDTDAttribute
+  | InvalidDTDTag
+  | DTDItemExpected
 
 type check_error =
-	| ElementDefinedTwice of string
-	| AttributeDefinedTwice of string * string
-	| ElementEmptyContructor of string
-	| ElementReferenced of string * string
-	| ElementNotDeclared of string
-	| WrongImplicitValueForID of string * string
+  | ElementDefinedTwice of string
+  | AttributeDefinedTwice of string * string
+  | ElementEmptyContructor of string
+  | ElementReferenced of string * string
+  | ElementNotDeclared of string
+  | WrongImplicitValueForID of string * string
 
 type prove_error =
-	| UnexpectedPCData
-	| UnexpectedTag of string
-	| UnexpectedAttribute of string
-	| InvalidAttributeValue of string
-	| RequiredAttribute of string
-	| ChildExpected of string
-	| EmptyExpected
-	| DuplicateID of string
-	| MissingID of string
+  | UnexpectedPCData
+  | UnexpectedTag of string
+  | UnexpectedAttribute of string
+  | InvalidAttributeValue of string
+  | RequiredAttribute of string
+  | ChildExpected of string
+  | EmptyExpected
+  | DuplicateID of string
+  | MissingID of string
 
 type parse_error = parse_error_msg * Types.error_pos
 

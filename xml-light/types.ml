@@ -14,12 +14,12 @@ type error_msg =
   | EndOfTagExpected of string
   | EOFExpected
 
-type error_pos = {
-  eline : int;
-  eline_start : int;
-  emin : int;
-  emax : int;
-}
+type error_pos =
+  { eline : int
+  ; eline_start : int
+  ; emin : int
+  ; emax : int
+  }
 
 type dtd_child =
   | DTDTag of string
