@@ -1,4 +1,7 @@
-(library (name xml_light) (public_name csvfields.xml-light) (libraries)
+(library
+ (name xml_light)
+ (public_name csvfields.xml-light)
+ (libraries)
  (flags :standard -w -3)
  (modules dtd dtd0 types xml xmlParser xml_lexer xml_parser)
  (preprocess no_preprocessing))
