@@ -191,9 +191,6 @@ val xsd_of_ref : to_xsd -> to_xsd
 val xsd_of_lazy_t : to_xsd -> to_xsd
 val xsd_of_option : string -> to_xsd -> to_xsd
 
-(** Converstion functions used for excaml... macs should be upgraded to use this
-val list_xml : ('a -> xml list) -> 'a list to_xml *)
-
 module type X = sig
   type t
 
