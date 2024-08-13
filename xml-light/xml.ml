@@ -1,5 +1,5 @@
 (*
- * Xml Light, an small Xml parser/printer with DTD support.
+   * Xml Light, an small Xml parser/printer with DTD support.
  * Copyright (C) 2003 Nicolas Cannasse (ncannasse@motion-twin.com)
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301 USA
- *)
+*)
 
 open Printf
 
@@ -195,7 +195,7 @@ module Make (Buffer : X) = struct
                            [&#NUMERIC_VALUE;]
                            , where NUMERIC_VALUE can be hexadecimal or decimal. For
                            example, "&#20013;" or "&#x4e2d;".
-                        *)
+          *)
           Buffer.add_char tmp '&'
         else Buffer.add_string tmp "&amp;"
       | '\'' -> Buffer.add_string tmp "&apos;"

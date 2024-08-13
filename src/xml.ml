@@ -294,8 +294,8 @@ let xml_of_unit () = conversion (fun () -> "") ()
 let xml_of_bool t =
   conversion
     (function
-     | true -> "TRUE"
-     | false -> "FALSE")
+      | true -> "TRUE"
+      | false -> "FALSE")
     t
 ;;
 

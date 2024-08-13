@@ -1,7 +1,7 @@
 (* csv.ml - comma separated values parser
  *
  * $Id: csv.ml,v 1.5 2005/02/17 15:51:47 rich Exp $
- *)
+*)
 
 (* The format of CSV files:
  *
@@ -38,7 +38,7 @@
  * and often will, have different lengths). We then provide simple
  * functions to read the CSV file line-by-line, copy it out, or copy a
  * subset of it into a matrix.
- *)
+*)
 
 (* namespace redirection: (mostly to get tail-recursive List functions) *)
 open Core

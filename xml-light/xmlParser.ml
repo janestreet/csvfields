@@ -1,5 +1,5 @@
 (*
- * Xml Light, an small Xml parser/printer with DTD support.
+   * Xml Light, an small Xml parser/printer with DTD support.
  * Copyright (C) 2003 Nicolas Cannasse (ncannasse@motion-twin.com)
  * Copyright (C) 2003 Jacques Garrigue
  *
@@ -20,7 +20,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301 USA
- *)
+*)
 
 open Printf
 open Dtd
