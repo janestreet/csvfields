@@ -2,15 +2,15 @@ open! Core
 
 module Helper : sig
   (** Prepend the name of a field to the list of fields. This function is Fields.fold
-  friendly.  *)
+      friendly. *)
   val prepend_name : string list -> (_, _) Field.t -> string list
 
   (** Add the two integer parameters. This function is Fields.fold friendly *)
   val add : int -> int -> _ -> int
 
   (** [write ~is_first ~is_last ~writer ~to_string _ _ t] writes the contents of a field
-  using [writer]. If [not is_first] [writer ","; writer (to_string t)]. If [is_last] then
-  [writer (to_string t); writer "\n"]. *)
+      using [writer]. If [not is_first] [writer ","; writer (to_string t)]. If [is_last]
+      then [writer (to_string t); writer "\n"]. *)
   val write
     :  is_first:bool
     -> is_last:bool
@@ -44,23 +44,23 @@ module type Csvable_simple = sig
   type t
 
   (** [true] if [csvable] will be represented as a column, and its label is the field name
-  of a containing record. *)
+      of a containing record. *)
   val is_csv_atom : bool
 
   (** A [Fields.fold] friendly version of a function to collect the csv header of the
-  [csvable] type. The output is the header in reverse order. *)
+      [csvable] type. The output is the header in reverse order. *)
   val rev_csv_header' : string list -> _ -> _ -> string list
 
   val rev_csv_header_spec' : Spec.t list -> _ -> _ -> Spec.t list
 
   (** [t_of_row' _ row] generates a [Fields.make_creator] friendly function that outputs a
-  pair [(creator, tail)] such that [creator ()] generates the type [t] with the first
-  elements in [row], and [tail] is the remaining set of elements from [row] that where not
-  used in the creation of [t]. *)
+      pair [(creator, tail)] such that [creator ()] generates the type [t] with the first
+      elements in [row], and [tail] is the remaining set of elements from [row] that where
+      not used in the creation of [t]. *)
   val t_of_row' : _ -> string list -> (unit -> t) * string list
 
-  (** [row_of_t'] has the same arguments as [Helper.write]. The ignored arguments are
-  used to make it [Fields.fold] friendly. *)
+  (** [row_of_t'] has the same arguments as [Helper.write]. The ignored arguments are used
+      to make it [Fields.fold] friendly. *)
   val write_row_of_t'
     :  is_first:bool
     -> is_last:bool
@@ -89,7 +89,7 @@ module type Csvable = sig
   val row_of_t : t -> string list
 
   (** The following functions are wrappers around the corresponding functions in
-    [Csvlib.Csv]. *)
+      [Csvlib.Csv]. *)
   val csv_load : ?separator:char -> string -> t list
 
   val csv_load_in : ?separator:char -> In_channel.t -> t list
@@ -105,8 +105,7 @@ module type Stringable = sig
   val of_string : string -> t
 end
 
-(** A functor to quickly generate a Csvable module using its string conversion
-functions *)
+(** A functor to quickly generate a Csvable module using its string conversion functions *)
 module Atom (S : Stringable) : Csvable with type t = S.t
 
 (** All the conversion functions for internal use *)
