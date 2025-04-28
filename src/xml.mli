@@ -1,13 +1,13 @@
 open! Core
 
 (** Automatic conversion of OCaml field types into XML. This is used for excel
-communication functions *)
+    communication functions *)
 
 (** Abstract representation of the xml type *)
 type xml
 
 (** The functions provided by the with xml camlp4 extension, and that need to be provided
- in a hand made conversion to be used by the extension. *)
+    in a hand made conversion to be used by the extension. *)
 module type Xmlable = sig
   type t
 
@@ -48,9 +48,7 @@ exception Illegal_atom of xml
 
 exception Unexpected_xml of (xml * string)
 
-(** @raise Unexpected_xml, Illegal_atom
-    Used by the with xml extension
-*)
+(** @raise Unexpected_xml, Illegal_atom Used by the with xml extension *)
 val check_extra_fields : xml -> string list -> unit
 
 (** XSD definition functions *)
@@ -64,7 +62,7 @@ val decomplexify_list : xml list -> xml list option
 val type_of_simple : xml list -> string
 
 (** Standard wrapping to generate the necessary namespaces that are used in the automated
-conversions *)
+    conversions *)
 val wrap : xml -> xml
 
 (** Restriction generation *)
