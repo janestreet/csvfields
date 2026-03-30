@@ -322,7 +322,12 @@ module Make (Buffer : X) = struct
   ;;
 end
 
-include Make (Buffer)
+include Make (struct
+    include Buffer
+
+    (* Eta-expand [add_string] to make arguments global *)
+    let add_string t s = add_string t s
+  end)
 
 let to_string xml =
   let buffer = Buffer.create 200 in
