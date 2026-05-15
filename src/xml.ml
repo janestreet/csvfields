@@ -183,11 +183,9 @@ let wrap xsd =
 ;;
 
 (** All the conversion functions *)
-(*let atom_conversion f xml =
-  match xml with
-  | Xml_light.Xml.Element (_, [], [Xml_light.Xml.PCData string])
-  | Xml_light.Xml.PCData string -> f string
-  | Xml_light.Xml.Element _ -> raise (Illegal_atom xml)*)
+(* let atom_conversion f xml = match xml with | Xml_light.Xml.Element (_, [],
+   [Xml_light.Xml.PCData string]) | Xml_light.Xml.PCData string -> f string |
+   Xml_light.Xml.Element _ -> raise (Illegal_atom xml) *)
 
 let get_child name xml =
   try

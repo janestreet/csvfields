@@ -5,9 +5,9 @@ module Helper = struct
   let prepend_name acc field = Field.name field :: acc
   let add x acc _field = x + acc
 
-  (*let separator = ","
+  (* let separator = ","
 
-  let newline = "\n"*)
+     let newline = "\n" *)
 
   let write ~is_first:_ ~is_last:_ ~writer ~to_string _ _ field = writer (to_string field)
 end
@@ -197,8 +197,8 @@ module Record (S : Csvable_simple) : Csvable with type t = S.t = struct
   let t_of_row strings = of_list_without_tail S.t_of_row' strings
 
   (* This is not being used anymore really *)
-  (*let write_row_of_t ~writer csvable =
-    S.write_row_of_t' ~is_first:true ~is_last:true ~writer () () csvable*)
+  (* let write_row_of_t ~writer csvable = S.write_row_of_t' ~is_first:true ~is_last:true
+     ~writer () () csvable *)
 
   let row_of_t csvable =
     let list = ref [] in

@@ -24,8 +24,8 @@ end
 
 module Spec : sig
   (* A tree describing the header of a record in a csv. A field [x] becomes [Leaf x] if it
-  is an atom. Otherwise, if a record, it becomes a tree with children generated
-  recursively. *)
+     is an atom. Otherwise, if a record, it becomes a tree with children generated
+     recursively. *)
   type t =
     | Leaf of string
     | Tree of (string * t list)

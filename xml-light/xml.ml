@@ -1,5 +1,5 @@
 (*
-   * Xml Light, an small Xml parser/printer with DTD support.
+ * Xml Light, an small Xml parser/printer with DTD support.
  * Copyright (C) 2003 Nicolas Cannasse (ncannasse@motion-twin.com)
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301 USA
-*)
+ *)
 
 open Printf
 
@@ -144,9 +144,8 @@ let children = function
   | x -> raise (Not_element x)
 ;;
 
-(*let enum = function
-	| Element (_,_,clist) -> List.to_enum clist
-	| x -> raise (Not_element x)
+(* let enum = function | Element (_,_,clist) -> List.to_enum clist | x -> raise
+   (Not_element x)
 *)
 
 let iter f = function
@@ -183,18 +182,17 @@ module Make (Buffer : X) = struct
       | '>' -> Buffer.add_string tmp "&gt;"
       | '<' -> Buffer.add_string tmp "&lt;"
       | '&' ->
-        (* The condition is [p < l-3] instead of [p < l-2] to account for
-                           a potential semi-colon. *)
+        (* The condition is [p < l-3] instead of [p < l-2] to account for a potential
+           semi-colon. *)
         if p < l - 3
            && text.[p + 1] = '#'
            && is_leading_character_of_decimal_or_hexidecimal text.[p + 2]
         then
           (* According to https://en.wikipedia.org/wiki/XML#Escaping and
-                           https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Character_reference_overview,
-                           valid escape sequences starting with "&#" are in the form:
-                           [&#NUMERIC_VALUE;]
-                           , where NUMERIC_VALUE can be hexadecimal or decimal. For
-                           example, "&#20013;" or "&#x4e2d;".
+             https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Character_reference_overview,
+             valid escape sequences starting with "&#" are in the form: [&#NUMERIC_VALUE;]
+             , where NUMERIC_VALUE can be hexadecimal or decimal. For example, "&#20013;"
+             or "&#x4e2d;".
           *)
           Buffer.add_char tmp '&'
         else Buffer.add_string tmp "&amp;"

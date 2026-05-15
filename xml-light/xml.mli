@@ -1,5 +1,5 @@
 (*
-   * Xml Light, an small Xml parser/printer with DTD support.
+ * Xml Light, an small Xml parser/printer with DTD support.
  * Copyright (C) 2003 Nicolas Cannasse (ncannasse@motion-twin.com)
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301 USA
-*)
+ *)
 
 (** Xml Light
 
@@ -134,8 +134,8 @@ val attrib : xml -> string -> string
     the xml is not an element *)
 val children : xml -> xml list
 
-(*** [enum xdata] returns the children enumeration of the xml node
- Raise {!Xml.Not_element} if the xml is not an element *)
+(*** [enum xdata] returns the children enumeration of the xml node Raise
+  {!Xml.Not_element} if the xml is not an element *)
 (* val enum : xml -> xml Enum.t *)
 
 (** [iter f xdata] calls f on all children of the xml node. Raise {!Xml.Not_element} if
