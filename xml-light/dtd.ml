@@ -1,5 +1,5 @@
 (*
-   * Xml Light, an small Xml parser/printer with DTD support.
+ * Xml Light, an small Xml parser/printer with DTD support.
  * Copyright (C) 2003 Nicolas Cannasse (ncannasse@motion-twin.com)
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301 USA
-*)
+ *)
 
 open Printf
 open Types
@@ -253,11 +253,8 @@ let start_prove dtd root =
 
 let to_string_ref = ref (fun _ -> assert false)
 
-(*let trace dtd tag =
-	let item = DTDElement ("current",dtd.current) in
-	printf "%s : %s\n"
-		(match tag with None -> "#PCDATA" | Some t -> t)
-		(!to_string_ref item)*)
+(* let trace dtd tag = let item = DTDElement ("current",dtd.current) in printf "%s : %s\n"
+   (match tag with None -> "#PCDATA" | Some t -> t) (!to_string_ref item) *)
 
 exception TmpResult of dtd_result
 
